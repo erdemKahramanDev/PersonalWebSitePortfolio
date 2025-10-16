@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 
 export default function ThemeToggle() {
   const [isDark, setIsDark] = useState<boolean>(() => {
-    if (typeof window === "undefined") return true;
-    const saved = localStorage.getItem("theme");
-    if (saved) return saved === "dark";
+    if (typeof window === "undefined") {
+      return true;
+    }
     return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
 
@@ -12,15 +12,29 @@ export default function ThemeToggle() {
     const root = document.documentElement;
     root.classList.toggle("dark", isDark);
     root.classList.toggle("light", !isDark);
-    localStorage.setItem("theme", isDark ? "dark" : "light");
   }, [isDark]);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const handleChange = (e: MediaQueryListEvent) => {
+      setIsDark(e.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange);
+    };
+  }, []); 
   return (
     <button
       aria-pressed={isDark}
       onClick={() => setIsDark((s) => !s)}
       className="relative inline-flex items-center rounded-full p-1"
-      title={isDark ? "Karanlık tema" : "Açık tema"}
+      title={isDark ? "Açık temaya geç" : "Karanlık temaya geç"}
     >
       <span className={`flex h-8 w-14 items-center rounded-full transition-colors duration-300 ${isDark ? 'bg-gray-700 border border-border/50' : 'bg-gray-200 border border-border/40'}`}>
         <span className={`inline-flex h-6 w-6 transform items-center justify-center rounded-full bg-white text-yellow-400 shadow-md transition-transform duration-300 ${isDark ? 'translate-x-6 bg-slate-800 text-white' : 'translate-x-1 bg-white text-yellow-400'}`}>
