@@ -1,0 +1,247 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    --background: 0 0% 100%; /* white */
+    --foreground: 222.2 84% 4.9%; /* near black */
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 145 71% 35%; /* #1a9a50 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 91 89% 64%; /* neon green accent */
+    --accent-foreground: 240 6% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 13% 91%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 8% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 240 5% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 240 5% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 145 71% 35%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 5% 22%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 240 6% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 91 89% 64%;
+    --accent-foreground: 240 6% 10%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 145 35% 32%;
+    --input: 240 6% 18%;
+    --ring: 145 71% 35%;
+
+    --sidebar-background: 240 8% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 145 71% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 6% 18%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 145 35% 32%;
+    --sidebar-ring: 145 71% 35%;
+  }
+
+/* Ensure explicit .light class to enforce light vars when toggled */
+.light {
+  --background: 0 0% 100%; /* white */
+  --foreground: 222.2 84% 4.9%; /* near black */
+
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+
+  --primary: 145 71% 35%; /* #1a9a50 */
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+
+  --accent: 91 89% 64%; /* neon green accent */
+  --accent-foreground: 240 6% 10%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 220 13% 91%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 222.2 84% 4.9%;
+
+  --radius: 0.5rem;
+
+  --sidebar-background: 0 0% 98%;
+  --sidebar-foreground: 240 5.3% 26.1%;
+  --sidebar-primary: 240 5.9% 10%;
+  --sidebar-primary-foreground: 0 0% 98%;
+  --sidebar-accent: 240 4.8% 95.9%;
+  --sidebar-accent-foreground: 240 5.9% 10%;
+  --sidebar-border: 220 13% 91%;
+  --sidebar-ring: 217.2 91.2% 59.8%;
+}
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  pre,
+  code {
+    overflow-x: auto;
+    white-space: pre;
+  }
+}
+
+@layer components {
+  /* Hide scrollbars but keep scroll behavior */
+  .no-scrollbar {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .blinking-cursor {
+    display: inline-block;
+    width: 1ch;
+    animation: blink 1s steps(2, start) infinite;
+  }
+
+  .animated-gradient-text {
+    background: linear-gradient(90deg, hsl(var(--accent)), hsl(var(--primary)), hsl(var(--accent)));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 3s linear infinite;
+  }
+
+  .heroBg {
+    @apply bg-transparent backdrop-blur-sm;
+  }
+
+  .animatedBox {
+    @apply rounded-lg;
+    transition: transform 300ms ease, box-shadow 300ms ease;
+  }
+
+  .box-linear-animation {
+    background-image: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+  }
+
+  @keyframes blink {
+    0% { opacity: 1 }
+    50% { opacity: 0 }
+    100% { opacity: 1 }
+  }
+
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  /* Pause marquee animation on hover */
+  .marquee-container:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  /* Seamless marquee using measured segment width */
+  .marquee-track {
+    animation: marquee-translate var(--marquee-duration, 20s) linear infinite;
+  }
+  @keyframes marquee-translate {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(var(--segment-width, 0px) * -1)); }
+  }
+
+    @keyframes spin-orbit {
+      0% {
+        transform: rotate(0deg);
+      }
+  
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  
+    @keyframes spin-orbit-reverse {
+      0% {
+        transform: rotate(360deg);
+      }
+  
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+  
+    .orbit-spin {
+      animation: spin-orbit 20s linear infinite;
+    }
+  
+    .orbit-spin-reverse {
+      animation: spin-orbit-reverse 20s linear infinite;
+    }
+}
