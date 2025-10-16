@@ -1,6 +1,6 @@
 import path from "path";
 import { createServer } from "./index";
-import * as express from "express";
+import express from "express";
 
 const app = createServer();
 const port = process.env.PORT || 3000;
@@ -12,6 +12,7 @@ const distPath = path.join(__dirname, "../spa");
 // Serve static files
 app.use(express.static(distPath));
 
+// Mark non-API, non-health GETs (except / and /index.html) with 404 status for SPA devtools clarity
 app.use((req, res, next) => {
   if (
     req.method === "GET" &&
@@ -27,8 +28,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/(.*)", (req, res) => {
-// Serve index.html for any GET that isn't an API or health check (Express v5 safe: no path pattern)
+// Express v5-safe SPA fallback: no path pattern, just a global middleware
 app.use((req, res, next) => {
   if (req.method === "GET") {
     const isApi = req.path.startsWith("/api/");
@@ -39,6 +39,8 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+app.listen(port, () => {
   console.log(`🚀 Fusion Starter server running on port ${port}`);
   console.log(`📱 Frontend: http://localhost:${port}`);
   console.log(`🔧 API: http://localhost:${port}/api`);

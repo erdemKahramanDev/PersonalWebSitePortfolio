@@ -13,7 +13,7 @@ import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { handleMail } from "./routes/mail";
-import { handleNotFound } from "./routes/not-found.ts";
+import { handleNotFound } from "./routes/not-found";
 
 export function createServer() {
   const app = express();
