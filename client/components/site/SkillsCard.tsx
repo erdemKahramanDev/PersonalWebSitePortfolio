@@ -28,9 +28,11 @@ const iconNames = [
 ] as const;
 
 function TechIcon({ name }: { name: string }) {
-  const exts = useMemo(() => ["svg", "png", "webp"] as const, []);
+  // Prefer PNG first since production upload has PNGs; fall back to SVG/WEBP if available
+  const exts = useMemo(() => ["png", "svg", "webp"] as const, []);
   const [idx, setIdx] = useState(0);
-  const src = `/icons/${name}.${exts[idx]}`;
+  const base = import.meta.env.BASE_URL;
+  const src = `${base}icons/${name}.${exts[idx]}`;
   return (
     <img
       src={src}
