@@ -13,7 +13,7 @@ import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { handleMail } from "./routes/mail";
-import { handleNotFound } from "./routes/not-found";
+import { handleNotFound } from "./routes/not-found.ts";
 
 export function createServer() {
   const app = express();
@@ -30,8 +30,18 @@ export function createServer() {
   app.get("/api/demo", handleDemo);
   app.post("/api/contact", handleMail);
 
-  // 404 handler for all other /api routes - must be last!
   app.use("/api", handleNotFound);
+
+  app.use((req, res, next) => {
+    if (
+      req.method === "GET" &&
+      req.path !== "/" &&
+      !req.path.startsWith("/api/")
+    ) {
+      res.status(404);
+    }
+    next();
+  });
 
   return app;
 }

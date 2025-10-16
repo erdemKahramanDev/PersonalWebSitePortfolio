@@ -1,15 +1,6 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 const NotFound = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
 
-  useEffect(() => {
-     if (location.pathname !== "/404") {
-      navigate("/404", { replace: true });
-    }
-  }, [location.pathname, navigate]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
