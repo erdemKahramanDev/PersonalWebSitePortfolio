@@ -28,13 +28,17 @@ app.use((req, res, next) => {
 });
 
 app.get("/(.*)", (req, res) => {
-  if (req.path.startsWith("/api/") || req.path.startsWith("/health")) {
-    return res.status(404).json({ error: "API endpoint not found" });
+// Serve index.html for any GET that isn't an API or health check (Express v5 safe: no path pattern)
+app.use((req, res, next) => {
+  if (req.method === "GET") {
+    const isApi = req.path.startsWith("/api/");
+    const isHealth = req.path.startsWith("/health");
+    if (!isApi && !isHealth) {
+      return res.sendFile(path.join(distPath, "index.html"));
+    }
   }
-  res.sendFile(path.join(distPath, "index.html"));
+  next();
 });
-
-app.listen(port, () => {
   console.log(`🚀 Fusion Starter server running on port ${port}`);
   console.log(`📱 Frontend: http://localhost:${port}`);
   console.log(`🔧 API: http://localhost:${port}/api`);
