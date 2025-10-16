@@ -18,8 +18,14 @@ import { handleNotFound } from "./routes/not-found";
 export function createServer() {
   const app = express();
 
-  app.use(cors());
-  app.use(express.json());
+
+app.use(cors({
+  origin: ["https://aekahraman.com", "https://localhost:8080"],
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"],
+}));
+
+app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
   app.get("/api/ping", (_req, res) => {
