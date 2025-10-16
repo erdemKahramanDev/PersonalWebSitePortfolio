@@ -32,8 +32,7 @@ export default function ContactSection() {
 
     try {
       setLoading(true);
-      const API_BASE = import.meta.env.VITE_API_BASE_URL; 
-      const res = await fetch(`${API_BASE}/contact`, {
+      const res = await fetch('/api/contact', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),

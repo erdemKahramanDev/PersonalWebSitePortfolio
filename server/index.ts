@@ -1,3 +1,4 @@
+
 /**
  * Express Server Configuration
  * 
@@ -18,15 +19,40 @@ import { handleNotFound } from "./routes/not-found";
 export function createServer() {
   const app = express();
 
+  // Production-ready CORS configuration
+  const allowedOrigins = [
+    "https://aekahraman.com",
+    "https://www.aekahraman.com",
+    ...(process.env.NODE_ENV === "development" ? ["http://localhost:8080", "http://localhost:3000"] : [])
+  ];
 
-app.use(cors({
-  origin: ["https://aekahraman.com", "https://localhost:8080"],
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type"],
-}));
+  app.use(cors({
+    origin: (origin, callback) => {
+      // Allow requests with no origin (mobile apps, Postman, etc.)
+      if (!origin) return callback(null, true);
+      
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+    credentials: true
+  }));
 
-app.use(express.json());
+  app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
+
+  // Health check endpoint
+  app.get("/api/health", (_req, res) => {
+    res.json({ 
+      status: "ok", 
+      timestamp: new Date().toISOString(),
+      env: process.env.NODE_ENV || "production"
+    });
+  });
 
   app.get("/api/ping", (_req, res) => {
     const ping = process.env.PING_MESSAGE ?? "ping";
