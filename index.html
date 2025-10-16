@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
@@ -8,8 +8,24 @@
   </head>
 
   <body>
+    <script>
+      // Tema tercihini tarayıcıdan algıla ve html elementine class ekle
+      (function() {
+        try {
+          var saved = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var html = document.documentElement;
+          if (saved === 'dark' || (!saved && prefersDark)) {
+            html.classList.add('dark');
+            html.classList.remove('light');
+          } else {
+            html.classList.add('light');
+            html.classList.remove('dark');
+          }
+        } catch(e) {}
+      })();
+    </script>
     <div id="root"></div>
-
     <script type="module" src="/client/App.tsx"></script>
   </body>
 </html>
