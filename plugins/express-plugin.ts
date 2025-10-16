@@ -1,15 +1,14 @@
-import type { Plugin } from "vite";
+import { Plugin } from "vite";
 import path from "path";
 import fs from "fs";
 import { createServer } from "../server";
 
-export function expressPlugin(): Plugin {
+export default function expressPlugin(): Plugin {
   return {
     name: "express-plugin",
-    apply: "serve", 
+    apply: "serve",
     configureServer(server) {
       const app = createServer();
-
       server.middlewares.use(app);
       server.middlewares.use(async (req, res, next) => {
         try {
@@ -39,9 +38,7 @@ export function expressPlugin(): Plugin {
             res.end(html);
             return;
           }
-        } catch (e) {
-          // Silently continue on errors
-        }
+        } catch (e) {}
         next();
       });
     },
