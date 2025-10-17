@@ -48,9 +48,9 @@ export default function Hero() {
               )}> 
                 <span className="text-pink-500">&lt;p&gt;</span> Merhaba, ben modern teknolojileri kullanarak <span className="text-green-400">yenilikçi</span>, <span className="text-yellow-400">ölçeklenebilir</span> ve <span className="text-blue-400">kullanıcıyı merkeze alan</span> web ve mobil çözümler hayata geçiren bir yazılım geliştiricisiyim. 
                 <span className={cn(showFullText ? "inline" : "hidden md:inline")}>
-                  <br /><br /> Teknoloji yelpazemde yer alan <span className="text-pink-500">Expo, Next.js, Node.js, Flutter</span> ve <span className="text-pink-500">React.js</span> gibi araçlarla sadece kod yazmıyor, aynı zamanda performanslı ve geleceğe dönük sistemler inşa ediyorum. Özellikle <span className="text-green-400">sistem mimarisi</span> tasarımı, mikroservislerin gücü ve veritabanı optimizasyonu gibi konulara büyük bir tutkuyla yaklaşıyorum. 
-                  <br /><br /> Backend tarafında, yüksek trafiği sorunsuzca yönetebilen, modüler ve kolayca geliştirilebilen mimariler tasarlamak en büyük önceliğim. API tasarımı ve veri modellemesiyle sağlam temeller atarak ölçeklenebilir çözümler üretiyorum. 
-                  <br /><br /> Hedefim; estetik ve işlevselliği buluşturan, hem kod kalitesiyle hem de kullanıcı deneyimiyle öne çıkan projelere imza atmaktır.
+                  <br /><br /> Teknoloji yelpazemde yer alan <span className="text-pink-500">Next.js, Nuxt.js, Node.js, Flutter</span> ve <span className="text-pink-500">React.js</span> gibi araçlarla sadece kod yazmıyor, aynı zamanda performanslı ve geleceğe dönük sistemler inşa ediyorum. Özellikle <span className="text-green-400">sistem mimarisi</span> tasarımı, mikroservisler ve veritabanı optimizasyonu gibi konulara büyük bir tutkuyla yaklaşıyorum.
+                  <br /><br /> Backend tarafında, yüksek trafiği sorunsuzca yönetebilen, modüler ve kolayca geliştirilebilen mimariler tasarlamak en büyük önceliğim. API tasarımı ve veri modellemesiyle sağlam temeller atarak ölçeklenebilir çözümler üretiyorum.
+                  <br /><br /> Hedefim; estetik ve işlevselliği buluşturan, hem kod kalitesiyle hem de kullanıcı deneyimiyle öne çıkan özel yazılım çözümleri geliştirmektir. Web sitesi geliştirme, mobil uygulama oluşturma ve yazılım satın alma hizmetleri sunmaktayım.
                 </span>
                 <span className="text-pink-500">&lt;/p&gt;</span> 
               </p>

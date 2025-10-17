@@ -1,3 +1,13 @@
+/**
+ * Collaboration Section Component
+ * 
+ * Displays service offerings and collaboration opportunities
+ * Features: Responsive grid layout, interactive cards with icons, hover effects
+ * 
+ * @author Ahmed Erdem Kahraman
+ * @date 2025
+ */
+
 import { Code2, Brain, Cloud, Database, Monitor, Package, Palette, Server, ShoppingCart, Smartphone, Users, Zap } from "lucide-react";
 import React from "react";
 
@@ -11,62 +21,62 @@ const items: Item[] = [
   {
     title: "Web Geliştirme",
     desc:
-      "Next.js ve React.js başta olmak üzere HTML/CSS/JS ile hızlı, erişilebilir ve SEO dostu web arayüzleri tasarlar ve uygularım.",
+      "Modern, hızlı ve kullanıcı dostu web siteleri oluşturuyorum. Next.js ve React.js ile SEO uyumlu, ölçeklenebilir çözümler sunuyorum.",
     Icon: Monitor,
   },
   {
     title: "Mobil Geliştirme",
-    desc: "Flutter ve React Native ile iOS/Android’de tek kod tabanından akıcı, ölçeklenebilir mobil uygulamalar üretirim.",
+    desc: "Tek kod tabanı ile iOS ve Android için akıcı, native deneyim sunan mobil uygulamalar geliştiriyorum. Flutter ve React Native uzmanıyım.",
     Icon: Smartphone,
   },
   {
     title: "Veritabanı Yönetimi",
-    desc: "MySQL, PostgreSQL ve MongoDB üzerinde şema tasarımı, optimizasyon ve bakım süreçlerini üstlenirim.",
+    desc: "Verilerinizi güvenli, hızlı ve düzenli tutuyorum. MySQL, PostgreSQL ve MongoDB ile veri mimarinizi optimize ediyorum.",
     Icon: Database,
   },
   {
     title: "API Geliştirme",
-    desc: "Güvenli REST API’ler, kimlik doğrulama ve ödeme entegrasyonlarını içeren uçtan uca servisler kurarım.",
+    desc: "Güvenli ve hızlı API'ler oluşturuyorum. Kimlik doğrulama, ödeme sistemleri ve üçüncü parti entegrasyonlarıyla uçtan uca çözümler sunuyorum.",
     Icon: Server,
   },
   {
     title: "Performans Optimizasyonu",
-    desc: "Yüklenme süresi, Core Web Vitals ve genel tepki süresini ölçer, dar boğazları gideririm.",
+    desc: "Web sitenizi hızlandırın! Yüklenme sürelerini minimuma indirerek kullanıcı deneyimini en üst seviyeye çıkarıyorum.",
     Icon: Zap,
   },
   {
     title: "E-ticaret Çözümleri",
-    desc: "Stripe ve Iyzico ile ödeme akışlarını kurar; ölçeklenebilir mağaza altyapıları kurgularım.",
+    desc: "Profesyonel e-ticaret siteleri oluşturuyor, ödeme sistemlerini entegre ederek satış sürecinizi sorunsuz hale getiriyorum.",
     Icon: ShoppingCart,
   },
   {
     title: "Yapay Zeka Çözümleri",
-    desc: "İş süreçlerinize uygun ML/AI bileşenleri entegre eder, veri odaklı iyileştirmeler yaparım.",
+    desc: "İş süreçlerinizi dönüştürün! Yapay zeka ile veri analizi, otomasyon ve akıllı sistemler geliştiriyorum.",
     Icon: Brain,
   },
   {
     title: "Bulut Hizmetleri",
-    desc: "Firebase, PocketBase ve Directus ile hızlı backend kurar; depolama, auth ve gerçek zamanlı veriyi yönetirim.",
+    desc: "Güvenilir ve ölçeklenebilir bulut altyapıları kuruyor, veri depolama ve gerçek zamanlı senkronizasyon sağlıyorum.",
     Icon: Cloud,
   },
   {
     title: "Full Stack Yazılım Geliştirme",
-    desc: "Node.js–React/Next.js hattında Prisma, MongoDB/PostgreSQL ile modern, sürdürülebilir tam yığın çözümler geliştiririm.",
+    desc: "Fikrinizden tam ürüne! Node.js–React/Next.js teknolojileriyle uçtan uca modern web çözümleri geliştiriyorum.",
     Icon: Code2,
   },
   {
     title: "ERP Sistemi Geliştirme",
-    desc: "Operasyonlarınızı tek çatı altında toplayan modüler ERP bileşenleri tasarlar ve uygularım.",
+    desc: "İş süreçlerinizi dijitalleştirin! Operasyonlarınızı tek çatı altında toplayan özel ERP sistemleri tasarlıyorum.",
     Icon: Package,
   },
   {
     title: "CRM Çözümleri",
-    desc: "Satış ve destek ekiplerinin ihtiyaçlarına göre özelleşen akışlar ve entegrasyonlar oluştururum.",
+    desc: "Müşteri ilişkilerinizi yönetin! Satış ve destek süreçleriniz için özelleştirilmiş CRM sistemleri oluşturuyorum.",
     Icon: Users,
   },
   {
     title: "Tema Geliştirme",
-    desc: "Markanıza özel, hızlı ve SEO uyumlu temaları kodlar, sürümlemesini yaparım.",
+    desc: "Markanızı yansıtan benzersiz web temaları oluşturuyorum. Hızlı, duyarlı ve SEO dostu tasarımlarla dijital varlığınızı güçlendiriyorum.",
     Icon: Palette,
   },
 ];
@@ -80,7 +90,7 @@ export default function Collaboration() {
         <div className="px-4 py-12">
           <h2 className="text-accent text-center p-6 font-mono text-lg mb-2">• İş Birliği</h2>
           <h2 className="text-center text-xl lg:text-4xl max-w-5xl mx-auto font-bold font-mono mb-10">
-            Bireysel olarak veya ekiple birlikte ihtiyaçlarınıza özel çözümler geliştirebiliriz.
+            Yaratıcı çözümler için birlikte çalışalım
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -104,8 +114,8 @@ export default function Collaboration() {
 
           <div className="text-center mx-auto flex items-center justify-center mt-12 max-w-lg">
             <p className="text-base">
-              Yeni projelerde çalışmak ve iş birliği yapmak için sabırsızlanıyorum. Haydi fikirlerinizi konuşalım!
-              <a className="text-accent font-bold ml-1"> İletişime Geç!</a>
+              Bir sonraki projenizde birlikte çalışmak ister misiniz? Fikirlerinizi hayata geçirelim!
+              <a href="#contact" className="text-accent font-bold ml-1">İletişime Geçin</a>
             </p>
           </div>
         </div>
